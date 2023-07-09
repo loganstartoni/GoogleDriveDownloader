@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "GoogleDriveDownloader"
+version = "0.1.0"
+description = ""
+authors = ["loganstartoni <logan@startoni.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+google-api-python-client = "^2.92.0"
+google-auth-httplib2 = "^0.1.0"
+google-auth-oauthlib = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
