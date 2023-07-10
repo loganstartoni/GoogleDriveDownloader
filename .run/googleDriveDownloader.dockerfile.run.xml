@@ -1,0 +1,25 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="googleDriveDownloader.dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+    <deployment type="dockerfile">
+      <settings>
+        <option name="imageTag" value="startoni.cloud/googledrivedownloader" />
+        <option name="buildKitEnabled" value="true" />
+        <option name="containerName" value="GoogleDriveDownloader" />
+        <option name="sourceFilePath" value="googleDriveDownloader.dockerfile" />
+        <option name="volumeBindings">
+          <list>
+            <DockerVolumeBindingImpl>
+              <option name="containerPath" value="/output" />
+              <option name="hostPath" value="/Volumes/Development/dockerData/GoogleDriveDownloader/output" />
+            </DockerVolumeBindingImpl>
+            <DockerVolumeBindingImpl>
+              <option name="containerPath" value="/creds" />
+              <option name="hostPath" value="/Volumes/Development/dockerData/GoogleDriveDownloader/secrets" />
+            </DockerVolumeBindingImpl>
+          </list>
+        </option>
+      </settings>
+    </deployment>
+    <method v="2" />
+  </configuration>
+</component>
