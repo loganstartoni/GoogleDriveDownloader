@@ -120,5 +120,5 @@ if __name__ == '__main__':
     print(scanning_folder)
     if automation_folder.get("id") not in scanning_folder.get("parents"):
         raise ValueError("Wrong Scanning Folder")
-    drive.get_files_in_folder(folder_id=scanning_folder.get('id'), delete_files=False)
+    drive.get_files_in_folder(folder_id=scanning_folder.get('id'), delete_files=True)
 
