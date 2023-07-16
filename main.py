@@ -1,4 +1,5 @@
 import io
+import os
 from pathlib import Path
 
 from google.auth.transport.requests import Request
@@ -113,7 +114,10 @@ class GoogleDriveInterface:
 
 
 if __name__ == '__main__':
-    drive = GoogleDriveInterface()
+    google_drive_secret_location = None
+    if os.getenv('GOOGLE_DRIVE_SECRET_LOCATION'):
+        google_drive_secret_location = os.getenv('GOOGLE_DRIVE_SECRET_LOCATION')
+    drive = GoogleDriveInterface(credential_secret_folder_location=google_drive_secret_location)
     automation_folder = drive.get_file_list(file_name_to_retrieve="Automation")
     scanning_folder = drive.get_file_list(file_name_to_retrieve="Scanning")
     print(automation_folder)
