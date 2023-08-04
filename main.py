@@ -11,10 +11,10 @@ from googleapiclient.http import MediaIoBaseDownload
 
 
 class GoogleDriveInterface:
-    base_folder_location = Path("/creds")
+    base_folder_location = Path(os.getenv("GOOGLE_DRIVE_SECRET_LOCATION", "/creds"))
     credential_file = Path("drive.json")
     token_file = Path("token.json")
-    output_file_location = Path("/output")
+    output_file_location = Path(os.getenv("GOOGLE_DRIVE_OUTPUT_FOLDER_NAME", "/output"))
     creds = None
     service = None
     scopes = [
@@ -122,8 +122,8 @@ if __name__ == '__main__':
     if os.getenv('GOOGLE_DRIVE_SECRET_LOCATION'):
         google_drive_secret_location = os.getenv('GOOGLE_DRIVE_SECRET_LOCATION')
     drive = GoogleDriveInterface(credential_secret_folder_location=google_drive_secret_location)
-    automation_folder = drive.get_file_list(file_name_to_retrieve="Automation")
-    scanning_folder = drive.get_file_list(file_name_to_retrieve="Scanning")
+    automation_folder = drive.get_file_list(file_name_to_retrieve=os.getenv("GOOGLE_DRIVE_PARENT_FOLDER_NAME", "Automation"))
+    scanning_folder = drive.get_file_list(file_name_to_retrieve=os.getenv("GOOGLE_DRIVE_FOLDER__TO_DOWNLOAD_NAME", "Scanning"))
     print(automation_folder)
     print(scanning_folder)
     if automation_folder.get("id") not in scanning_folder.get("parents"):
