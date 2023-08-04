@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 
 from google.auth.transport.requests import Request
+from google.auth.exceptions import RefreshError
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
@@ -32,7 +33,10 @@ class GoogleDriveInterface:
             self.creds = Credentials.from_authorized_user_file(str(token_file), self.scopes)
         if not self.creds or not self.creds.valid:
             if self.creds and self.creds.expired and self.creds.refresh_token:
-                self.creds.refresh(Request())
+                try:
+                    self.creds.refresh(Request())
+                except RefreshError:
+                    token_file.unlink()
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
                     str(credential_file),
