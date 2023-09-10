@@ -1,0 +1,6 @@
+site_name: Google Drive Downloader
+site_author: Logan Startoni
+site_description: Site for describing the usage of the google drive downloader script.
+theme:
+  name: material
+site_url: https://googledownloader.startoni.cloud

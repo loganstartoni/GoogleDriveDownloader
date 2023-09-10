@@ -7,7 +7,3 @@ In pycharm use the googleDriveDownloader.dockerfile run config.
 
 # Run as Script
 In Pycharm use the downloader - local run config. 
-
-
-# Privacy Policy
-Nothing is saved to servers. You control where this is run, and where you save the files from drive.
